@@ -12,19 +12,16 @@ https://gitlab.cs.ttu.ee/-/profile/personal_access_tokens
 
 ![gitlab_access_token](libs/img/access_token_create.png)
 
-Copy access token 
+Copy the access token and paste it into the main.py file
 ![gitlab_access_token](libs/img/gitlab_access_token.png)
-
-Put it in access_token.txt file in main project folder
-![gitlab_access_token](libs/img/access_token_txt.png)
 
 ## Generate time tracking report
 
-Copy project id from your GitLab repo and put it in main.py file
+Copy the project id from your GitLab repo and put it in the main.py file
 ![gitlab_access_token](libs/img/project_id.png)
 
-Run main.py file via PyCharm or command line
+Run the main.py file via PyCharm or the command line
 `python main.py`
 
-You will get a report in format:
+You will get a report in the format:
 `{'Person': 'hh:mm:ss', 'Person2': 'hh:mm:ss'}`

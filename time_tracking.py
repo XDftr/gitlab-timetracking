@@ -2,11 +2,10 @@ from libs import requests
 
 
 class TimeTracking:
-    def __init__(self, project_id):
+    def __init__(self, project_id, access_token):
         self.seconds_per_unit = {"s": 1, "m": 60, "h": 3600, "d": 86400, "w": 604800}
-        self.private_token = open('access_token.txt', 'r').readline()
         self.headers = {
-            "Private-Token": self.private_token
+            "Private-Token": access_token
         }
         self.issues_iid = []
         self.time_spent = {}
