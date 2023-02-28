@@ -24,14 +24,22 @@ class TimeTracking:
         return "%d:%02d:%02d" % (hour, minutes, seconds)
 
     def find_issues_iids(self):
-        all_issues_url = f"https://gitlab.cs.ttu.ee/api/v4/projects/{self.project_id}/issues/"
-        all_issues = requests.get(all_issues_url, headers=self.headers)
-        for i in all_issues.json():
+        all_issues_url = f"https://gitlab.cs.ttu.ee/api/v4/projects/{self.project_id}/issues?scope=all&per_page=100"
+        all_issues = []
+        page = 1
+        while True:
+            response = requests.get(f"{all_issues_url}&page={page}", headers=self.headers)
+            issues = response.json()
+            if not issues:
+                break
+            all_issues.extend(issues)
+            page += 1
+
+        for i in all_issues:
             self.issues_iid.append(i['iid'])
 
     def find_time_spent(self):
         for j in self.issues_iid:
-
             issue_data_url = f"https://gitlab.cs.ttu.ee/api/v4/projects/{self.project_id}/issues/{j}/notes"
             issue_data = requests.get(issue_data_url, headers=self.headers)
             body = issue_data.json()
