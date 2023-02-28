@@ -6,7 +6,7 @@ Go to Preferences > Access Tokens
 
 https://gitlab.cs.ttu.ee/-/profile/personal_access_tokens
 
-`Token: anything`
+`Token name: anything`
 
 `Select scopes: api`
 
